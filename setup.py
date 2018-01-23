@@ -54,7 +54,7 @@ if __name__ == "__main__":
             # Install and register AutoItX
             #
             if os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/AutoItX3.dll")) :
-                print "Don't think we need to unregister the old one..."
+                print ("Don't think we need to unregister the old one...")
 
             instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
             if not os.path.isdir(instDir) :
@@ -66,21 +66,21 @@ if __name__ == "__main__":
             # and make its methods known to Python
             #
             cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
-            print cmd
+            print (cmd)
             subprocess.check_call(cmd, shell=True)
             makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
             #
             # Make sure we have win32com installed
             #
             if not os.path.isfile(makepy) :
-                print "AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/."
+                print ("AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/.")
                 sys.exit(2)
 
             cmd = "python %s %s" % (makepy, instFile)
-            print cmd
+            print (cmd)
             subprocess.check_call(cmd)
         else :
-            print "AutoItLibrary cannot be installed on non-Windows platforms."
+            print ("AutoItLibrary cannot be installed on non-Windows platforms.")
             sys.exit(2)
     #
     # Figure out the install path
